@@ -1,0 +1,109 @@
+{%extends 'base/base.html'%}
+{% load static %}
+{% block content%}
+
+<header class="header">
+  {% include 'include/nav.html'%}
+  <div class="section__container header__container" id="home">
+    <div class="header__image">
+      <img src="{% static 'img/header.png' %}" alt="header" />
+    </div>
+    <div class="header__content">
+      <h2>IT IS GOOD TIME FOR THE GREATE TASTE OF ANYTHING</h2>
+      <h1>SNACKOS<br /><span>WEEK</span></h1>
+    </div>
+  </div>
+</header>
+
+<section class="section__container banner__container" id="special">
+  <div class="banner__card">
+    <p>TRY IT OUT TODAY</p>
+    <h4>MOST POPULAR BURGER</h4>
+  </div>
+  <div class="banner__card">
+    <p>TRY IT OUT TODAY</p>
+    <h4>MORE FUN<br />MORE TASTE</h4>
+  </div>
+  <div class="banner__card">
+    <p>TRY IT OUT TODAY</p>
+    <h4>FRESH & CHILI</h4>
+  </div>
+</section>
+
+<section class="section__container order__container" id="menu">
+  <h3>ALWAYS TASTEY FOOD</h3>
+  <h2 class="section__header">CHOOSE & ENJOY</h2>
+  <p class="section__description">
+    Whether you crave classic flavors or daring combinations, this is where
+    your culinary journey begins. Indulge your cravings and savor every bite
+    as you create your personalized food and drinks experience with Snackos.
+  </p>
+  <div class="order__grid">
+   
+    {% for m in menu %}
+    <div class="order__card">
+      <img src="{{m.image.url}}" alt="order" id="img" />
+      <h4>{{m.name}}</h4>
+      <p>
+        {{ m.description|slice:":100" }}....
+      </p>
+      <a href="{% url 'food_details' m.category.slug m.slug %}">
+        <button class="btn">ORDER NOW</button>
+      </a>
+    
+    </div>
+    {% endfor %}
+ </div>
+  <div id="take">
+    <a href="{% url 'more' %}">
+      <button class="btn " id="more">more</button>
+    </a>
+    
+  </div>
+</section>
+{% if events %}
+{% for event in events %}
+<section class="section__container event__container" >
+  <div class="event__content">
+    <div class="event__image">
+      <img src="{{event.image.url}}" alt="event" id="event"/>
+    </div>
+    <div class="event__details">
+      
+      <h2 class="section__header">{{event.title}}</h2>
+      <p class="section__description">
+      {{event.description}}
+      </p>
+    </div>
+  </div>
+</section>
+{% endfor %}
+{% endif%}
+<section class="reservation" id="contact">
+  <div class="section__container reservation__container">
+    <h3>RESERVATION</h3>
+    <h2 class="section__header">Read About us</h2>
+    
+  </div>
+  <div id="take">
+    <a href="{% url 'about' %}" >
+      <button class="btn " id="more">About</button>
+    </a>
+  </div>
+ 
+  <img
+    src=" {% static 'img/reservation-bg-1.png' %}"
+    alt="reservation"
+    class="reservation__bg-1"
+  />
+  <img
+    src="{% static 'img/reservation-bg-2.png' %}"
+    alt="reservation"
+    class="reservation__bg-2"
+  />
+</section>
+
+{% endblock%}
+   
+
+    

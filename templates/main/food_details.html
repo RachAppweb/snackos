@@ -1,0 +1,27 @@
+{%extends 'base/base.html'%}
+{% load static %}
+{% block content%}
+<div id="navo">
+  {% include 'include/nav.html'%}
+</div>
+
+<section class="section__container event__container" id="event">
+    <div class="event__content">
+      <div class="event__image">
+        <img src="{{menu.image.url}}" alt="event" id="imgd"/>
+      </div>
+      <div class="event__details">
+        <h2 class="section__header">{{menu.name}}</h2>
+        <h3>{{menu.price}} DH</h3>
+        
+        <p class="section__description">
+         {{ menu.description}}
+        </p>
+        <h3> <i class="fa-solid fa-square-phone"></i> {{info.phone}}</h3>
+        {% if info.email %}
+        <h3> <i class="fa-solid fa-envelope"></i> {{info.email}}</h3>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

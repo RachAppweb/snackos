@@ -1,0 +1,28 @@
+{% load static %}
+<nav >
+    <div class="nav__header">
+      <div class="nav__logo">
+        <a href="#">
+          <img
+            src="{% static 'img/snackos-rm.png' %}"
+            alt="logo"
+            class="nav__logo-dark"
+          />
+        <img
+          src="{% static 'img/Snackos-logo-white-rm.png' %}"
+          alt="logo"
+          class="nav__logo-white"
+        />
+          
+        </a>
+      </div>
+      <div class="nav__menu__btn" id="menu-btn">
+        <i class="ri-menu-line"></i>
+      </div>
+    </div>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="{% url 'index' %}" id="na">HOME</a></li>
+      <li><a href="{% url 'more' %}" id="na">EXPLORE</a></li>
+      <li><a href="{% url 'about' %}" id="na">ABOUT US</a></li>
+    </ul>
+  </nav>

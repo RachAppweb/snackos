@@ -1,0 +1,32 @@
+{%extends 'base/base.html'%}
+{% load static %}
+{% block content%}
+<div id="navo">
+  {% include 'include/nav.html'%}
+</div>
+{% if info %}
+<section class="section__container event__container" id="event">
+    <div class="event__content">
+      <div class="event__image">
+        {% if info.image %}
+        <img src="{{info.image.url}}" alt="event" id="restau"/>
+        {% else %}
+        <img src="{% static 'img/default-restau.jpg' %}" alt="event"  id="restau"/>
+        {% endif %}
+      </div>
+      <div class="event__details">
+      
+        <h2 class="section__header">{{info.name}}</h2>
+        <p class="section__description">
+         {{info.description}}
+        </p>
+        <h3> <i class="fa-solid fa-clock"></i> {{info.from_to}}</h3>
+        <h3> <i class="fa-solid fa-square-phone"></i> {{info.phone}}</h3>
+        {% if info.email %}
+        <h3> <i class="fa-solid fa-envelope"></i> {{info.email}}</h3>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+{% endblock %}
