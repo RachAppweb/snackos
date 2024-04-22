@@ -67,7 +67,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'app.context_processor.foods',
                 'app.context_processor.events',
-                'app.context_processor.about'
+                'app.context_processor.about',
+                'app.context_processor.category',
             ],
         },
     },

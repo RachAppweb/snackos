@@ -1,12 +1,16 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 # Create your views here.
 def index(request):
     
     return render(request,'main/index.html')
 
-def more(request):
-    menu=Menu.objects.all().filter(is_availabele=True).order_by('id')
+def more(request,category_slug=None):
+    if category_slug != None:
+        category=get_object_or_404(Category,slug=category_slug)
+        menu=Menu.objects.filter(category=category,is_availabele=True).order_by('id')
+    else:
+       menu=Menu.objects.all().filter(is_availabele=True).order_by('id')
     context={
         'menus':menu
     }

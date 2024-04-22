@@ -10,10 +10,27 @@
   --header-font-1: "Alfa Slab One", serif;
   --header-font-2: "Bebas Neue", sans-serif;
 }
+a{
+  text-decoration: none !important;
+}
 #imgd {
   width: 70%;
   height: 66%;
   border-radius: 10px;
+}
+#drop {
+  text-align: center;
+}
+#db{
+  max-width: fit-content;
+  margin-inline: auto;
+  margin-bottom: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: var(--header-font-2);
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
 }
 #event {
   width: 98%;

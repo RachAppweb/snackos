@@ -4,23 +4,41 @@
 <div id="navo">
   {% include 'include/nav.html'%}
 </div>
+
 <section class="section__container order__container" id="menu">
-  <h3>ALWAYS TASTEY FOOD</h3>
+  
   <h2 class="section__header">CHOOSE & ENJOY</h2>
   <p class="section__description">
     Whether you crave classic flavors or daring combinations, this is where
     your culinary journey begins. Indulge your cravings and savor every bite
     as you create your personalized food and drinks experience with Snackos.
   </p>
+  <!-- start dropdown -->
+<div class="dropdown" id="drop">
+  <button class="btn btn-secondary dropdown-toggle" id="db" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu">
+  {% if category %}
+  {% for cat in category %}
+    <li><a class="dropdown-item" href="{{cat.get_url}}">{{cat.name}}</a></li>
+    
+    {% endfor %}
+  {% endif %}
+  </ul>
+</div>
+<!-- end dropdown -->
   <div class="order__grid">
    
     {% for m in menus %}
     <div class="order__card">
-      <img src="{{m.image.url}}" alt="order" id="img" />
-      <h4>Chicken Burger</h4>
+      <a href="{% url 'food_details' m.category.slug m.slug %}">
+        <img src="{{m.image.url}}" alt="order" id="img" />
+        <h4>{{m.name}}</h4>
+      </a>
+      
       <p>
-        Sink your teeth into the timeless perfection of our Chicken Burger,
-        an experience that never goes out of style.
+        {{ m.description|slice:":100" }}....
       </p>
       <a href="{% url 'food_details' m.category.slug m.slug %}">
         <button class="btn"> More Details </button>

@@ -42,8 +42,11 @@
    
     {% for m in menu %}
     <div class="order__card">
-      <img src="{{m.image.url}}" alt="order" id="img" />
-      <h4>{{m.name}}</h4>
+      <a href="{% url 'food_details' m.category.slug m.slug %}">
+        <img src="{{m.image.url}}" alt="order" id="img" />
+        <h4>{{m.name}}</h4>
+      </a>
+      
       <p>
         {{ m.description|slice:":100" }}....
       </p>
